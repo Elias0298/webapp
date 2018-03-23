@@ -1,7 +1,7 @@
 <template>
     <v-layout row>
         <v-flex xs6 offset-xs3>
-          <PanelRegister title="Register">
+          <panel title="Register">
             <div class="pr-4 pl-4 pt-6 pb-2">
               <br>
             <v-form v-model="valid">
@@ -33,7 +33,7 @@
               <br>
               <v-btn slot class="btn" @click="register" dark>Register</v-btn>
             </div>
-          </PanelRegister>
+          </panel>
         </v-flex>
     </v-layout>
 </template>
@@ -41,7 +41,7 @@
 <script>
 /* eslint-disable */
 import AuthenticationService from '@/services/AuthenticationService'
-import PanelRegister from '@/components/PanelRegister'
+import Panel from '@/components/Panel'
 
 export default {
   data () {
@@ -78,7 +78,7 @@ export default {
     }
   },
   components: {
-    PanelRegister
+    Panel
   }
 }
 </script>

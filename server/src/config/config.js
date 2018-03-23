@@ -1,13 +1,13 @@
 module.exports = {
 	port: process.env.PORT || 8081,
 	db: {
-		database: process.env.DB_NAME || 'comments',
-		user: process.env.DB_USER || 'comments',
-		password: process.env.DB_PASS || 'comments',
+		database: process.env.DB_NAME || 'tracker',
+		user: process.env.DB_USER || 'tracker',
+		password: process.env.DB_PASS || 'tracker',
 		options: {
 			dialect: process.env.DIALECT || 'sqlite',
 			host: process.env.HOST || 'localhost',
-			storage: './comments.sqlite',
+			storage: './tracker.sqlite',
 			operatorsAliases: false
 		}
 	},
