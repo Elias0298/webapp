@@ -54,4 +54,8 @@ body {
   background-size: cover;
 }
 
+.danger-alert {
+  margin-top: 1em;
+  color: red;
+}
 </style>

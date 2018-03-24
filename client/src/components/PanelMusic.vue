@@ -2,12 +2,10 @@
   <div class="white elevation-12">
     <v-toolbar flat dense class="black" dark>
       <v-toolbar-title class="title">{{title}}</v-toolbar-title>
+      <slot name="action"/>
       <v-spacer></v-spacer><v-icon >ic_queue_music</v-icon>
     </v-toolbar>
-    <div class="pr-4 pl-4 pt-6 pb-2">
-    	<slot>
-      </slot>
-    </div>
+    <div class="pr-4 pl-4 pt-6 pb-2"><slot></slot></div>
   </div>
 </template>
 

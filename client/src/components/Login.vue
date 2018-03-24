@@ -21,7 +21,8 @@
             </v-form>
               <div class="error" v-html="error"></div>
               <br>
-              <v-btn slot class="btn" @click="login" dark>Login</v-btn>
+              <v-btn 
+             class="btn" @click="login" dark>Login</v-btn>
           </div>
           </panel>
         </v-flex>
