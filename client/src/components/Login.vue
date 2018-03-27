@@ -1,7 +1,7 @@
 <template>
     <v-layout row>
         <v-flex xs6 offset-xs3>
-          <panel title="Login" >
+          <panel title="LOGIN" class="p-title">
             <div class="pr-4 pl-4 pt-6 pb-2">
               <br>
             <v-form>
@@ -19,9 +19,9 @@
                   ></v-text-field>
                 </div>
             </v-form>
-              <div class="error" v-html="error"></div>
+              <notifications group="auth" position="bottom left" classes="vue-notification"/>
               <br>
-              <v-btn 
+              <v-btn
              class="btn" @click="login" dark>Login</v-btn>
           </div>
           </panel>
@@ -32,7 +32,6 @@
 <script>
 /* eslint-disable */
 import AuthenticationService from '@/services/AuthenticationService'
-import Panel from '@/components/Panel'
 
 export default {
   data () {
@@ -51,20 +50,27 @@ export default {
         })
         this.error = null
         this.$store.dispatch('setToken', response.data.token)
-        this.$store.dispatch('setUser', response.data.user)
-      } catch (err) {
-        this.error = err.response.data.error
+        this.$store.dispatch('setUser',  response.data.user)
+        this.$router.push({
+          name: 'songs'})
+        this.$notify({
+          group: 'foo',
+          type: 'success',
+          title: `Welcome ${this.email}!`,
+          text: 'Nice to see you again!'
+        })
+      } catch (error) {
+        this.error = error.response.data.error
+        this.$notify({ group: 'auth', type: 'error', text: this.error})
       }
     }
-  },
-  components: {
-    Panel
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 h1, h2 {
   font-weight: normal;
 }
@@ -113,5 +119,33 @@ a {
 .application--wrap {
   background-color: black !important;
 }
+
+/* /// notification style /// */
+.vue-notification {
+  padding: 10px;
+  margin: 0 5px 5px;
+
+  font-size: 12px;
+
+  color: #ffffff;
+  background: #44A4FC;
+  border-left: 5px solid #187FE7;
+
+  &.warn {
+    background: #ffb648;
+    border-left-color: #f48a06;
+  }
+
+  &.error {
+    background: #68CD86;
+    border-left-color: #B82E24;
+  }
+
+  &.success {
+    background: #68CD86;
+    border-left-color: #42A85F;
+  }
+}
+/*/// //// ///*/
 
 </style>

@@ -1,7 +1,7 @@
 <template>
     <v-layout row>
         <v-flex xs6 offset-xs3>
-          <panel title="SIGN UP">
+          <panel title="Register">
             <div class="pr-4 pl-4 pt-6 pb-2">
               <br>
             <v-form v-model="valid">

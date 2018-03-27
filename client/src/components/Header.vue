@@ -1,19 +1,24 @@
 <template>
   <v-toolbar fixed color="black" dark class="pb-16">
-    <v-toolbar-title class="mr-4" router to="home">
-      <a href="/">GOLANG</a>
+    <v-toolbar-title class="mr-4" router to="/">
+      <router-link
+      class="home"
+      :to="{
+        name: 'HelloWorld'}">
+        Obsidian
+      </router-link>
     </v-toolbar-title>
     <v-toolbar-items class="items">
-      <v-btn v-if="!$store.state.isUserLoggedIn" flat dark router to="songs">
+      <v-btn v-if="$store.state.isUserLoggedIn" flat dark router to="/songs">
         Browse
       </v-btn>
     </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items class="items">
-      <v-btn v-if="!$store.state.isUserLoggedIn" flat dark router to="login">
+      <v-btn v-if="!$store.state.isUserLoggedIn" flat dark router to="/login">
         Login
       </v-btn>
-      <v-btn v-if="!$store.state.isUserLoggedIn" flat dark router to="register">
+      <v-btn v-if="!$store.state.isUserLoggedIn" flat dark router to="/register">
           Sign up
       </v-btn>
       <v-btn v-if="$store.state.isUserLoggedIn" flat dark @click="logout" router to="/">
@@ -40,11 +45,11 @@ export default {
 <style scoped>
 
 .items {
-  font-family: 'Courier';
+  font-family: 'Futura';
 }
 
 .toolbar {
-  font-family: 'Kalam';
+  font-family: 'Lobster 1.4';
 }
 
 a {

@@ -1,85 +1,11 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <p>Simple and Progressive Music Web Application</p>
+    <br>
+    <br>
+    <v-btn class="purple">GitHub</v-btn>
+    <v-btn outline class="white">About us</v-btn>
   </div>
 </template>
 
@@ -88,7 +14,7 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Obsidian'
     }
   }
 }
@@ -96,8 +22,20 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1 {
   font-weight: normal;
+  font-size: 14em;
+  margin-top: 0em;
+}
+
+p {
+  font-family: 'Roboto';
+  color: white;
+  text-align: center;
+  display: inline;
+  font-size: 1.5em;
+  font-weight: lighter;
+  line-height: 0.1px;
 }
 ul {
   list-style-type: none;
@@ -109,5 +47,27 @@ li {
 }
 a {
   color: #42b983;
+}
+/* ######### edit ######### */
+
+.application--wrap {
+  background-color: cyan;
+}
+
+.hello {
+  font-family: 'Lobster 1.4';
+}
+
+.dark {
+}
+
+.purple {
+  font-family: 'Montserrat Thin';
+  color: white;
+}
+
+.white {
+  font-family: 'Montserrat Thin';
+  color: white;
 }
 </style>

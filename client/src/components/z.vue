@@ -1,12 +1,12 @@
 <template>
   <v-layout row>
     <v-flex xs6 offset-xs3>
-      <PanelMusic title="Songs">
-        <v-btn v-if="!$store.state.isUserLoggedIn"slot="action" ligth fab medium absolute middle right router to="songs/create">
+      <panel-music title="Songs" class="panel">
+        <v-btn v-if="!$store.state.isUserLoggedIn" slot="action" class="cyan" light fab medium absolute middle right router to="/songs/create">
           <v-icon>add</v-icon>
         </v-btn>
         <div class="song" v-for="song in songs" :key="song.id">
-          <v-layout>
+          <v-layout class="this">
             <v-flex xs6>
               <div class="song-title">
                 {{song.title}}
@@ -16,28 +16,28 @@
               </div>
               <div class="song-genre">
                 {{song.genre}}
-              </div>              
+              </div>
             </v-flex>
-            <v-btn class="cyan" top router to="/songId">View</v-btn>
+            <v-btn class="purple" dark top :to="{
+                name: 'song',
+                params: {
+                songId: song.id
+              }
+        }">View</v-btn>
             <v-flex xs6>
               <img class="album-image" :src="song.albumImageUrl"/>
             </v-flex>
           </v-layout>
         </div>
-      </PanelMusic>
+      </panel-music>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
-
 import SongService from '@/services/SongService'
-import PanelMusic from '@/components/PanelMusic'
 
 export default {
-  components: {
-    PanelMusic
-  },
   data () {
     return {
       songs: null
@@ -55,8 +55,16 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+.panel {
+  height: auto;
+}
+
 .items {
   font-family: 'Courier';
+}
+
+.btn {
+  font-family: Courier;
 }
 
 .toolbar {
@@ -68,9 +76,10 @@ a {
   color: white;
 }
 
+/*<-- song styles */
 .song {
-  padding: 20px;
-  height: 330px;
+  padding: 15px;
+  height: 0px auto;
   overflow: hidden;
 }
 
@@ -89,9 +98,18 @@ a {
 .album-image {
   width: 70%;
   margin: 0px auto;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+/*/ songs -->*/
+
+.this {
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
-.btn {
-  font-family: Courier;
+.purple {
+  margin-top: 15px;
+  font-family: 'Montserrat thin'
 }
 </style>

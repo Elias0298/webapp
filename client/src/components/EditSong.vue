@@ -55,14 +55,17 @@
         :rules="[required]"
         ></v-text-field>
       </panel-music>
-      <notifications group="auth" position="top right"/>
       <notifications group="foo" position="top right"/>
-        <v-btn class="btn" @click="create" dark>Add Song</v-btn>
+      <div class="danger-alert" v-if="error">
+        {{error}}
+      </div>
+        <v-btn class="btn" @click="save" dark>Edit Song</v-btn>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
+
 import SongService from '@/services/SongService'
 
 export default {
@@ -83,29 +86,40 @@ export default {
     }
   },
   methods: {
-    async create () {
+    async save () {
       this.error = null
       let areAllFieldsFilledIn = Object
         .keys(this.song)
         .every(key => !!this.song[key])
       if (!areAllFieldsFilledIn) {
         this.error = 'Please fill in all the required fields.'
-        this.$notify({ group: 'auth', type: 'error', text: this.error })
         return
       }
+      let songId = this.$store.state.route.params.songId
       try {
-        await SongService.post(this.song)
+        await SongService.put(this.song)
         this.$router.push({
-          name: 'songs'
+          name: 'song',
+          params: {
+            songId: songId
+          }
         })
         this.$notify({
           group: 'foo',
           type: 'success',
-          text: `<strong>${this.song.title}</strong> by <strong>${this.song.artist}</strong> has been added.`
+          text: `<strong>${this.song.title}</strong> has been successfully edited.`
         })
       } catch (err) {
         console.log(err)
       }
+    }
+  },
+  async mounted () {
+    try {
+      let songId = this.$store.state.route.params.songId
+      this.song = (await SongService.show(songId)).data
+    } catch (err) {
+      console.log(err)
     }
   }
 }
@@ -124,7 +138,7 @@ export default {
 }
 
 .btn {
-  font-family: Courier;
+  font-family: 'Montserrat Thin';
 }
 
 </style>
